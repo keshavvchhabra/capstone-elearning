@@ -3,6 +3,7 @@ import React from 'react';
 import Logo from './Logo';
 import { ChevronDown, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -23,12 +24,16 @@ const Navbar = () => {
         <div className="bg-gray-100 rounded-full p-2">
           <Search className="h-5 w-5 text-gray-500" />
         </div>
+        <Link to={"/auth"}>
         <Button variant="outline" className="border-gray-300 text-gray-800">
           Sign Up
         </Button>
+        </Link>
+        <Link to={"/auth"}>
         <Button className="bg-[#D9614E] hover:bg-[#C54E3D] text-white">
           Sign In
         </Button>
+        </Link>
       </div>
     </nav>
   );
