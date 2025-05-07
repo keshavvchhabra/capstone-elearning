@@ -2,7 +2,6 @@
 import React from 'react';
 import { Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import IconCard from './IconCard';
 import image from "../public/lovable-uploads/ok.png"
 
 const Hero = () => {
