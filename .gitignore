@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-src/components/ui
+# src/components/ui
 
-src/components/hooks
+# src/components/hooks
 
-src/components/lib
+# src/components/lib
