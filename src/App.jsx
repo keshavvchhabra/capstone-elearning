@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AuthPages from "./pages/Auth";
+import QuizApp from "./pages/Quiz";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +19,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="auth" element={<AuthPages/>}/>
+          <Route path="/auth" element={<AuthPages/>}/>
+          <Route path="/quiz" element={<QuizApp/>}/>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

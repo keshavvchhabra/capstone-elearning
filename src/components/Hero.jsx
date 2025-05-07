@@ -28,20 +28,12 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-
-      {/* Right side hero image with floating cards */}
       <div className="flex-1 relative">
-        {/* Background circles */}
-  
-
-        {/* Main image */}
-        <img 
+      <img 
           src={image}
           alt="Online Education Platform" 
           className="relative z-10 mx-auto lg:mx-0 w-full max-w-md"
         />
-
-        {/* Floating UI cards */}
       </div>
     </div>
   );

@@ -12,9 +12,9 @@ const Navbar = () => {
         <Logo />
         <div className="hidden md:flex space-x-8">
           <a href="#" className="text-gray-800 hover:text-[#A84261] transition-colors">Home</a>
-          <a href="#" className="text-gray-800 hover:text-[#A84261] transition-colors flex items-center">
+          <Link to={"/quiz"}><a href="#" className="text-gray-800 hover:text-[#A84261] transition-colors flex items-center">
             Quizes <ChevronDown className="ml-1 h-4 w-4" />
-          </a>
+          </a></Link>
           <a href="#" className="text-gray-800 hover:text-[#A84261] transition-colors flex items-center">
             Courses <ChevronDown className="ml-1 h-4 w-4" />
           </a>
