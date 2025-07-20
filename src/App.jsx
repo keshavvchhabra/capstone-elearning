@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AuthPages from "./pages/Auth";
 import QuizApp from "./pages/Quiz";
+import QuizTracking from "./pages/QuizTracking";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
           <Route path="/auth" element={<AuthPages/>}/>
           <Route path="/quiz" element={<QuizApp/>}/>
+          <Route path="/tracking" element={<QuizTracking/>}/>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

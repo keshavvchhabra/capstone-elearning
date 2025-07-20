@@ -19,12 +19,6 @@ const Hero = () => {
           <Button className="bg-[#D9614E] hover:bg-[#C54E3D] text-white px-8 py-6 text-lg">
             Start Now
           </Button>
-          <Button variant="outline" className="border-gray-200 flex items-center gap-2 px-6 py-6 text-lg">
-            <div className="rounded-full bg-white p-1 flex items-center justify-center">
-              <Play className="h-4 w-4 text-[#D9614E]" fill="#D9614E" />
-            </div>
-            Watch Video
-          </Button>
         </div>
       </div>
       <div className="flex-1 relative">

@@ -24,6 +24,7 @@ import {
   Play
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { setQuizProgress } from '@/lib/quizProgress';
 
 const QuizApp = () => {
   const [step, setStep] = useState('category'); // category -> difficulty -> type -> quiz -> results
@@ -115,10 +116,26 @@ const QuizApp = () => {
   };
   
   const handleAnswerSelect = (answer) => {
-    setAnswers({
+    const newAnswers = {
       ...answers,
       [currentQuestionIndex]: answer
-    });
+    };
+    setAnswers(newAnswers);
+    // Save session to localStorage as user answers
+    const quizId = `${selectedCategory?.id}-${difficulty}-${type}`;
+    if (questions.length > 0 && selectedCategory && difficulty && type) {
+      const session = loadQuizSession(quizId) || {
+        quizId,
+        questions,
+        userAnswers: {},
+        startedAt: quizStartTime ? quizStartTime.toISOString() : new Date().toISOString(),
+        completed: false,
+        score: 0,
+        completedAt: null,
+      };
+      session.userAnswers = newAnswers;
+      saveQuizSession(quizId, session);
+    }
   };
   
   const handleNextQuestion = () => {
@@ -128,6 +145,31 @@ const QuizApp = () => {
       setQuizComplete(true);
       setQuizEndTime(new Date());
       setStep('results');
+      // Save progress to localStorage
+      const quizId = `${selectedCategory.id}-${difficulty}-${type}`;
+      const score = calculateScore();
+      const progress = {
+        status: 'completed',
+        lastAttemptDate: new Date().toISOString(),
+        score,
+        totalQuestions: questions.length,
+        answers: questions.map((question, index) => ({
+          question: question.question,
+          userAnswer: answers[index],
+          correctAnswer: question.correct_answer,
+          explanation: '' // No explanation from API
+        }))
+      };
+      setQuizProgress(quizId, progress);
+      // Update quiz session with completion info
+      const session = loadQuizSession(quizId);
+      if (session) {
+        session.completed = true;
+        session.score = score;
+        session.completedAt = new Date().toISOString();
+        session.userAnswers = { ...answers };
+        saveQuizSession(quizId, session);
+      }
     }
   };
 
@@ -224,6 +266,17 @@ const QuizApp = () => {
     if (categoryName?.includes("Entertainment")) return <Grid className="h-5 w-5 text-[#A84261]" />;
     if (categoryName?.includes("Sports")) return <Target className="h-5 w-5 text-[#A84261]" />;
     return <List className="h-5 w-5 text-[#A84261]" />;
+  };
+
+  const getQuizSessionKey = (quizId) => `quizSession-${quizId}`;
+
+  const saveQuizSession = (quizId, session) => {
+    localStorage.setItem(getQuizSessionKey(quizId), JSON.stringify(session));
+  };
+
+  const loadQuizSession = (quizId) => {
+    const data = localStorage.getItem(getQuizSessionKey(quizId));
+    return data ? JSON.parse(data) : null;
   };
   
   if (error) {
@@ -545,7 +598,6 @@ const QuizApp = () => {
                 <p className="text-base text-gray-600">Time</p>
                 <p className="font-semibold text-xl text-[#14152E]">{calculateQuizTime()}</p>
               </div>
-              
               <div className="text-center">
                 <div className="bg-[#A84261] bg-opacity-10 p-4 rounded-full mb-3 inline-block">
                   <Target className="h-8 w-8 text-[#A84261]" />
