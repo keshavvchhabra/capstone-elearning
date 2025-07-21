@@ -16,9 +16,11 @@ const Hero = () => {
           Expand your skills in development, testing, analysis, and designing.
         </p>
         <div className="flex flex-col sm:flex-row mt-10 gap-4">
+          <a href="/quiz">
           <Button className="bg-[#D9614E] hover:bg-[#C54E3D] text-white px-8 py-6 text-lg">
             Start Now
           </Button>
+          </a>
         </div>
       </div>
       <div className="flex-1 relative">
