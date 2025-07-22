@@ -10,7 +10,7 @@ const Hero = () => {
       {/* Left side content */}
       <div className="flex-1">
         <h1 className="text-[#14152E] text-5xl md:text-6xl font-bold leading-tight">
-          Get where you're going faster with <span className="text-[#A84261]">Akademy.</span>
+          Get where you're going faster with <span className="text-[#A84261]">Academy.</span>
         </h1>
         <p className="text-gray-600 text-lg mt-6">
           Expand your skills in development, testing, analysis, and designing.
