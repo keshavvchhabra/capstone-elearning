@@ -30,7 +30,7 @@ const QuizTracking = () => {
 
   const handleStartOrRetake = (session) => {
     // Pass quiz params via state or query params if needed
-    navigate('/quiz', { state: { quiz: { id: session.quizId } } });
+    navigate('/quiz');
   };
 
   return (

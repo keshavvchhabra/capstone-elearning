@@ -10,7 +10,7 @@ const Logo = () => {
         <circle cx="24" cy="17" r="4" fill="#346A5B" />
       </svg>
       <span className="text-2xl font-bold ml-2">
-        <span className="text-[#A84261]">Keshav Academy</span>
+        <span className="text-[#A84261]">LearnEdge</span>
       </span>
     </div>
   );

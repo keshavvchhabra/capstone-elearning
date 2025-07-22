@@ -41,7 +41,7 @@ const QuizApp = () => {
   const [quizStartTime, setQuizStartTime] = useState(null);
   const [quizEndTime, setQuizEndTime] = useState(null);
   
-  // Fetch categories on component mount
+ 
   useEffect(() => {
     const fetchCategories = async () => {
       setIsLoading(true);
@@ -60,14 +60,14 @@ const QuizApp = () => {
     fetchCategories();
   }, []);
   
-  // Start timer when quiz begins
+
   useEffect(() => {
     if (step === 'quiz' && questions.length > 0 && !quizStartTime) {
       setQuizStartTime(new Date());
     }
   }, [step, questions, quizStartTime]);
   
-  // Fetch questions when all selections are made
+  
   const fetchQuestions = async () => {
     setIsLoading(true);
     try {
@@ -80,7 +80,7 @@ const QuizApp = () => {
         setQuestions(data.results);
         setStep('quiz');
       } else {
-        // Error handling based on response codes
+        
         switch(data.response_code) {
           case 1:
             setError('Not enough questions available. Try with different options.');
